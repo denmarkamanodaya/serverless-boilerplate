@@ -1,0 +1,23 @@
+login-v6:
+  handler: src/handlers/login/v6.handler
+  events:
+    - http:
+        path: /v6/login
+        method: POST
+        cors: true
+
+login-v5:
+  handler: src/handlers/login/v5.handler
+  events:
+    - http:
+        path: /v5/login
+        method: POST
+        cors: true
+
+login-v4:
+  handler: src/handlers/login/v4.handler
+  events:
+    - http:
+        path: /login
+        method: POST
+        cors: true

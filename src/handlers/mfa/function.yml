@@ -1,0 +1,15 @@
+mfa-send-otp:
+  handler: src/handlers/mfa/send-otp/v1.handler
+  events:
+    - http:
+        path: /mfa/otps
+        method: POST
+        cors: true
+
+mfa-verify:
+  handler: src/handlers/mfa/verify/v1.handler
+  events:
+    - http:
+        path: /mfa/verify
+        method: POST
+        cors: true

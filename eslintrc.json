@@ -1,0 +1,35 @@
+{
+    "env": {
+        "node": true
+    },
+    "extends": [
+        "airbnb-base",
+        "plugin:jest/recommended",
+        "plugin:security/recommended"
+    ],
+    "plugins": [
+        "jest",
+        "security"
+    ],
+    "parserOptions": {
+        "ecmaVersion": "latest"
+    },
+    "rules": {
+        "linebreak-style": 0,
+        "func-names": "off",
+        "no-unused-vars": ["error",
+            { 
+                "vars": "all", 
+                "args": "none", 
+                "ignoreRestSiblings": false
+            }
+        ],
+        "consistent-return": "off",
+        "arrow-body-style": "off",
+        "global-require": "off",
+        "import/no-dynamic-require": "off",
+        "prefer-rest-params": "off",
+        "class-methods-use-this": "off",
+        "max-classes-per-file": "off"
+    }
+}

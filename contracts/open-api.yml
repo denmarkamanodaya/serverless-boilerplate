@@ -1,0 +1,105 @@
+openapi: 3.0.3
+info:
+  title: IAM Service
+  version: 1.0.0
+servers:
+  - url: 'http://localhost:3000'
+tags:
+  - name: Reset Password
+paths:
+  '/password/request-reset':
+    post:
+      tags:
+        - Reset Password
+      summary: Request Reset Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/requestResetPassword'
+      responses:
+        '200':
+          description: Successful response will include token
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    x-stoplight:
+                      id: sphqpncz8z9qz
+                    default: 200
+                  code:
+                    type: string
+                    x-stoplight:
+                      id: ihq0h3cm2hjzm
+                    default: 'VALID'
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                    x-stoplight:
+                      id: p3cx54q7r9bol
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+  '/password/reset':
+    post:
+      tags:
+        - Reset Password
+      summary: Confirm Reset Password
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/confirmResetPassword'
+      responses:
+        '200':
+          description: Successful response will include success message
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  status:
+                    type: integer
+                    x-stoplight:
+                      id: sphqpncz8z9qz
+                    default: 200
+                  code:
+                    type: string
+                    x-stoplight:
+                      id: ihq0h3cm2hjzm
+                    default: 'PASSWORD_RESET_SUCCESSFULLY'
+                  data:
+                    type: object
+                    properties:
+                      message:
+                        type: object
+                        default: 'PASSWORD_UPDATED'
+
+            application/xml:
+              schema:
+                type: object
+                properties: {}
+components:
+  schemas:
+    requestResetPassword:
+      type: object
+      properties:
+        mobileNumber:
+          type: string
+    confirmResetPassword:
+      type: object
+      properties:
+        otp:
+          type: string
+        password:
+          type: string
+        mobileNumber:
+          type: string
+        token:
+          type: string
