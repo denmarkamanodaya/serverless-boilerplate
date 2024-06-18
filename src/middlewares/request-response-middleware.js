@@ -14,7 +14,9 @@ module.exports = () => {
     return /^application\/(.+\+)?json($|;.+)/.test(contentTypeHeader);
   };
 
-  const generateResponse = ({ statusCode, headers = {}, code, data }) => {
+  const generateResponse = ({
+    statusCode, headers = {}, code, data,
+  }) => {
     const responseHeaders = {
       'Content-Type': 'application/json',
       'Access-Control-Allow-Origin': allowedOrigin,
@@ -29,11 +31,11 @@ module.exports = () => {
       statusCode,
       body: isJSON(responseHeaders)
         ? JSON.stringify({
-            status: statusCode,
-            requestId,
-            code,
-            data,
-          })
+          status: statusCode,
+          requestId,
+          code,
+          data,
+        })
         : data,
     };
   };
@@ -58,9 +60,13 @@ module.exports = () => {
     },
 
     after: async ({ response }) => {
-      const { code, data, headers } = response;
-      const statusCode = httpStatus.OK;
-      return generateResponse({ statusCode, headers, code, data });
+      const {
+        status, code, data, headers,
+      } = response;
+      const statusCode = response?.status ? status : httpStatus.OK;
+      return generateResponse({
+        statusCode, headers, code, data,
+      });
     },
 
     onError: async ({ error }) => {

@@ -12,34 +12,34 @@ custom:
     prod: 1024
   artifactBucket: ud-${self:custom.common.stage}-${self:custom.common.projectName}-layers-bucket
   secretsManager:
-    dev: dev/idaas/iamkey
-    uat: uat/idaas/iamkey
-    prod: prod/idaas/iamkey
-  kSmsPubKey:
-    dev: eoLEfAnV6bVxqawkp6lj5DYsMJxiVSlhVxzkT534HY5AyThuVCdApc/ZWOv44e11GGMfV650fSuWQ13zjWAXrg==
-    uat: eoLEfAnV6bVxqawkp6lj5DYsMJxiVSlhVxzkT534HY5AyThuVCdApc/ZWOv44e11GGMfV650fSuWQ13zjWAXrg==
-    prod: gmU5y0VWiNQ24BRS9gUbblanYA8Kh2njHlE5j9xbsTretXvZLu3RHUsysod4q2FNxes3sj4TbrYlx8oRjQ7RAA==
-  kUmsPubKey:
-    dev: Iww8gxxH3S8Afk20ZWqzOrFS6TrQ5SsS/Xsb5quXQhdz1YmscJxcAco+rRjm4nip0ZOYx8GXTZRnahOmz4484Q==
-    uat: Iww8gxxH3S8Afk20ZWqzOrFS6TrQ5SsS/Xsb5quXQhdz1YmscJxcAco+rRjm4nip0ZOYx8GXTZRnahOmz4484Q==
-    prod: ZYvERwlYSNYQQOBebrdLNMwAUZuKsBy4LUs2sJT3rXkqX6vrZ5mI1ShOmq5zNfPGjx+eP40aaNm0c1XQFe+85w==
-  notifServiceUrl:
-    dev: https://lrpvic4r3j-vpce-01c11984138cd7f23.execute-api.ap-southeast-1.amazonaws.com/dev
-    uat: https://vo2w30geid-vpce-055f922395f814ec6.execute-api.ap-southeast-1.amazonaws.com/uat
-    prod: https://q6nkb4cku5-vpce-0bc2dbdd276261126.execute-api.ap-southeast-1.amazonaws.com/prod
-  idaServiceUrl:
-    dev: https://bt0dnww7c1-vpce-01c11984138cd7f23.execute-api.ap-southeast-1.amazonaws.com/dev
-    uat: https://a49ogqr226-vpce-055f922395f814ec6.execute-api.ap-southeast-1.amazonaws.com/uat
-    prod: https://hi2ddv911l-vpce-0bc2dbdd276261126.execute-api.ap-southeast-1.amazonaws.com/prod
-  notifServiceSender:
-    dev: 'UDBank DEV'
-    uat: 'UDBank STG'
-    prod: 'UDBank'
-  fraudServiceUrl:
-    dev: https://z9qr7b3m25-vpce-01c11984138cd7f23.execute-api.ap-southeast-1.amazonaws.com/dev
-    uat: https://p71mq7atol-vpce-055f922395f814ec6.execute-api.ap-southeast-1.amazonaws.com/uat
-    prod: https://96as5e4f79-vpce-0bc2dbdd276261126.execute-api.ap-southeast-1.amazonaws.com/prod
-  tagStage:
-    dev: Dev
-    uat: Staging
-    prod: Prod
+    dev: dev/test
+    uat: uat/test
+    prod: prod/test
+  # kSmsPubKey:
+  #   dev: eoLEfAnV6bVxqawkp6lj5DYsMJxiVSlhVxzkT534HY5AyThuVCdApc/ZWOv44e11GGMfV650fSuWQ13zjWAXrg==
+  #   uat: eoLEfAnV6bVxqawkp6lj5DYsMJxiVSlhVxzkT534HY5AyThuVCdApc/ZWOv44e11GGMfV650fSuWQ13zjWAXrg==
+  #   prod: gmU5y0VWiNQ24BRS9gUbblanYA8Kh2njHlE5j9xbsTretXvZLu3RHUsysod4q2FNxes3sj4TbrYlx8oRjQ7RAA==
+  # kUmsPubKey:
+  #   dev: Iww8gxxH3S8Afk20ZWqzOrFS6TrQ5SsS/Xsb5quXQhdz1YmscJxcAco+rRjm4nip0ZOYx8GXTZRnahOmz4484Q==
+  #   uat: Iww8gxxH3S8Afk20ZWqzOrFS6TrQ5SsS/Xsb5quXQhdz1YmscJxcAco+rRjm4nip0ZOYx8GXTZRnahOmz4484Q==
+  #   prod: ZYvERwlYSNYQQOBebrdLNMwAUZuKsBy4LUs2sJT3rXkqX6vrZ5mI1ShOmq5zNfPGjx+eP40aaNm0c1XQFe+85w==
+  # notifServiceUrl:
+  #   dev: https://lrpvic4r3j-vpce-01c11984138cd7f23.execute-api.ap-southeast-1.amazonaws.com/dev
+  #   uat: https://vo2w30geid-vpce-055f922395f814ec6.execute-api.ap-southeast-1.amazonaws.com/uat
+  #   prod: https://q6nkb4cku5-vpce-0bc2dbdd276261126.execute-api.ap-southeast-1.amazonaws.com/prod
+  # idaServiceUrl:
+  #   dev: https://bt0dnww7c1-vpce-01c11984138cd7f23.execute-api.ap-southeast-1.amazonaws.com/dev
+  #   uat: https://a49ogqr226-vpce-055f922395f814ec6.execute-api.ap-southeast-1.amazonaws.com/uat
+  #   prod: https://hi2ddv911l-vpce-0bc2dbdd276261126.execute-api.ap-southeast-1.amazonaws.com/prod
+  # notifServiceSender:
+  #   dev: 'UDBank DEV'
+  #   uat: 'UDBank STG'
+  #   prod: 'UDBank'
+  # fraudServiceUrl:
+  #   dev: https://z9qr7b3m25-vpce-01c11984138cd7f23.execute-api.ap-southeast-1.amazonaws.com/dev
+  #   uat: https://p71mq7atol-vpce-055f922395f814ec6.execute-api.ap-southeast-1.amazonaws.com/uat
+  #   prod: https://96as5e4f79-vpce-0bc2dbdd276261126.execute-api.ap-southeast-1.amazonaws.com/prod
+  # tagStage:
+  #   dev: Dev
+  #   uat: Staging
+  #   prod: Prod
