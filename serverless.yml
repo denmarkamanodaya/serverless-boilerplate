@@ -1,5 +1,5 @@
-service: idaas-iam
-frameworkVersion: '3'
+service: serverless-boilerplate
+frameworkVersion: "3"
 
 custom:
   common: ${file(./serverless.common.yml):custom}
@@ -82,11 +82,11 @@ package:
   exclude:
     - node_modules
   patterns:
-    - '!package-lock.json'
-    - '!yarn.lock'
+    - "!package-lock.json"
+    - "!yarn.lock"
 
 functions:
   - ${file(src/handlers/health/function.yml)}
-  
+
 plugins: ${file(yml/plugins.yml):plugins}
 resources: ${file(yml/resources.yml)}
