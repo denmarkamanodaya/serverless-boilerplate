@@ -1,4 +1,5 @@
-const context = require('../../../../utils/lambda-context');
+const AxiosMockAdapter = require('axios-mock-adapter');
+const context = require('../../../utils/lambda-context');
 
 let mockAxios;
 let handler;
@@ -8,7 +9,7 @@ describe('Test Health Handler', () => {
     eventData = structuredClone(context(null, null, null, { Authorization: 'token' }).event);
     const axios = require('axios').default;
     mockAxios = new AxiosMockAdapter(axios);
-    handler = require('../../../../../src/handlers/health/v1').handler;
+    handler = require('../../../../src/handlers/health/v1').handler;
   });
 
   test('Should return HTTP 202', async () => {
