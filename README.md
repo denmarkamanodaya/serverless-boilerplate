@@ -1,4 +1,4 @@
-# UD Serverless Boilerplate API
+# Serverless Boilerplate API
 
 ## Prerequisites
 

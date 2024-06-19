@@ -1,0 +1,15 @@
+mfa-generate-v1:
+  handler: src/handlers/mfa/generate/v1.handler
+  events:
+    - http:
+        path: /v1/mfa/generate
+        method: GET
+        cors: true
+
+mfa-verify-v1:
+  handler: src/handlers/mfa/verify/v1.handler
+  events:
+    - http:
+        path: /v1/mfa/verify
+        method: POST
+        cors: true

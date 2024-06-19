@@ -87,6 +87,7 @@ package:
 
 functions:
   - ${file(src/handlers/health/function.yml)}
+  - ${file(src/handlers/mfa/function.yml)}
 
 plugins: ${file(yml/plugins.yml):plugins}
 resources: ${file(yml/resources.yml)}
