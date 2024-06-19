@@ -22,7 +22,11 @@ module.exports = (schema) => ({
 
     if (error) {
       logger.info(error.details, 'JOI VALIDATION ERROR DETAILS');
-      throw new JoiValidation(error.message, httpResponseCodes.DATA_PROCESSING_ERROR.value, httpStatus.BAD_REQUEST);
+      throw new JoiValidation(
+        error.message,
+        httpResponseCodes.DATA_PROCESSING_ERROR.value,
+        httpStatus.BAD_REQUEST,
+      );
     }
   },
 });

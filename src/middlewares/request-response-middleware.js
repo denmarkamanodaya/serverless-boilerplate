@@ -1,5 +1,4 @@
 /* eslint-disable no-param-reassign */
-/* eslint-disable security/detect-unsafe-regex */
 const httpStatus = require('http-status');
 const { httpResponseCodes } = require('../common/response-codes');
 const { APP_REFERENCES } = require('../common/constants');

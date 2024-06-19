@@ -1,5 +1,6 @@
+/* eslint-disable no-param-reassign */
 const httpStatus = require('http-status');
-const { verify, decode } = require('../utils/helpers/jwt-helperv2');
+const { verify, decode } = require('../utils/helpers/jwt');
 const { jwtResponseCodes } = require('../common/response-codes');
 const { JWTError } = require('../utils/custom-errors/class-errors');
 
@@ -14,7 +15,13 @@ module.exports = (header) => {
       const token = headers[header].split(' ');
       const isValid = await verify(pickToken(token));
 
-      if (!isValid) throw new JWTError(jwtResponseCodes.JWT_INVALID, jwtResponseCodes.JWT_INVALID, httpStatus.UNAUTHORIZED);
+      if (!isValid) {
+        throw new JWTError(
+          jwtResponseCodes.JWT_INVALID,
+          jwtResponseCodes.JWT_INVALID,
+          httpStatus.UNAUTHORIZED,
+        );
+      }
 
       event.decodedToken = decode(pickToken(token));
       event.rawToken = pickToken(token);
