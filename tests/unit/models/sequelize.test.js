@@ -3,8 +3,8 @@ describe('model-sequelize', () => {
     process.env.NODE_ENV = 'dev';
     process.env.DB_HOST_READER = 'reader';
     process.env.DB_HOST_WRITER = 'writer';
-    process.env.user = 'username';
-    process.env.password = 'password';
+    process.env.DB_USER = 'username';
+    process.env.DB_PASSWORD = 'password';
 
     // eslint-disable-next-line global-require
     const { sequelize } = require('../../../src/models/index');

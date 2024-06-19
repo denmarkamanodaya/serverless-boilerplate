@@ -1,4 +1,3 @@
-// eslint-disable-next-line node/no-unpublished-require
 const AxiosMockAdapter = require('axios-mock-adapter');
 const axios = require('axios').default;
 

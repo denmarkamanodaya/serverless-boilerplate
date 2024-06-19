@@ -13,43 +13,40 @@ const db = {};
 
 let sequelize;
 
-sequelize =
-  env === 'test'
-    ? new Sequelize({
-        dialect: 'sqlite',
-        storage: 'tests/test.sqlite',
-      })
-    : new Sequelize(secrets.DB, null, null, {
-        logging: false,
-        dialect: 'mysql',
-        port: 3306,
-        replication: {
-          read: [
-            {
-              host: secrets.DB_HOST_READER,
-              username: secrets.user,
-              password: secrets.password,
-            },
-          ],
-          write: {
-            host: secrets.DB_HOST_WRITER,
-            username: secrets.user,
-            password: secrets.password,
-          },
+sequelize = env === 'test'
+  ? new Sequelize({
+    dialect: 'sqlite',
+    storage: 'tests/test.sqlite',
+  })
+  : new Sequelize(secrets.DB, null, null, {
+    logging: false,
+    dialect: 'mysql',
+    port: 3306,
+    replication: {
+      read: [
+        {
+          host: secrets.DB_HOST_READER,
+          username: secrets.DB_USER,
+          password: secrets.DB_PASSWORD,
         },
-        pool: {
-          max: 2,
-          min: 0,
-          idle: 0,
-          acquire: 3000,
-          evict: 6000,
-        },
-      });
+      ],
+      write: {
+        host: secrets.DB_HOST_WRITER,
+        username: secrets.DB_USER,
+        password: secrets.DB_PASSWORD,
+      },
+    },
+    pool: {
+      max: 2,
+      min: 0,
+      idle: 0,
+      acquire: 3000,
+      evict: 6000,
+    },
+  });
 
 fs.readdirSync(__dirname)
-  .filter((file) => {
-    return file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js';
-  })
+  .filter((file) => file.indexOf('.') !== 0 && file !== basename && file.slice(-3) === '.js')
   .forEach((file) => {
     const model = require(path.join(__dirname, file))(sequelize, Sequelize.DataTypes);
     db[model.name] = model;

@@ -1,4 +1,3 @@
-'use strict';
 const { Model } = require('sequelize');
 
 const { NODE_ENV } = process.env;
@@ -10,10 +9,7 @@ module.exports = (sequelize, DataTypes) => {
      * This method is not a part of Sequelize lifecycle.
      * The `models/index` file will call this method automatically.
      */
-    static associate(models) {
-      Users.hasMany(models.Devices, { foreignKey: 'userId', ...(NODE_ENV === 'test' ? { constraints: false } : {}) });
-      Users.hasMany(models.UserSessions, { foreignKey: 'userId', ...(NODE_ENV === 'test' ? { constraints: false } : {}) });
-    }
+
   }
   Users.init(
     {
@@ -61,7 +57,7 @@ module.exports = (sequelize, DataTypes) => {
       sequelize,
       modelName: 'Users',
       tableName: 'users',
-    }
+    },
   );
   return Users;
 };

@@ -2,8 +2,8 @@ const secrets = require('config-dug').default;
 
 module.exports = {
   development: {
-    username: secrets.user,
-    password: secrets.password,
+    username: secrets.DB_USER,
+    password: secrets.DB_PASSWORD,
     database: secrets.DB,
     host: secrets.DB_HOST_WRITE,
     read: secrets.DB_HOST_READ,
@@ -17,8 +17,8 @@ module.exports = {
     host: ':memory:',
   },
   staging: {
-    username: secrets.user,
-    password: secrets.password,
+    username: secrets.DB_USER,
+    password: secrets.DB_PASSWORD,
     database: secrets.DB,
     host: secrets.DB_HOST_WRITE,
     read: secrets.DB_HOST_READ,
@@ -28,8 +28,8 @@ module.exports = {
     pool: 50,
   },
   production: {
-    username: secrets.user,
-    password: secrets.password,
+    username: secrets.DB_USER,
+    password: secrets.DB_PASSWORD,
     database: secrets.DB,
     host: secrets.DB_HOST_WRITE,
     read: secrets.DB_HOST_READ,
