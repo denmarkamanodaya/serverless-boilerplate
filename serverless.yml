@@ -44,6 +44,7 @@ functions:
   - ${file(src/handlers/auth/function.yml)}
   - ${file(src/handlers/org/function.yml)}
   - ${file(src/handlers/role/function.yml)}
+  - ${file(src/handlers/health/function.yml)}
 
 plugins: ${file(yml/plugins.yml):plugins}
 resources: ${file(yml/resources.yml)}
