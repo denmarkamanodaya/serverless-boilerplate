@@ -24,7 +24,7 @@ module.exports.handler = middleware(async ({ headers, body }) => {
     mfa_factors: [
         {
             phone: {
-                value: "+12345678910",
+                value: "+1234567890",
             }
         }
     ]
