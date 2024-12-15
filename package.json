@@ -39,7 +39,8 @@
     "sequelize": "^6.19.0",
     "thirty-two": "^1.0.2",
     "uuid": "^9.0.0",
-    "winston": "^3.8.2"
+    "winston": "^3.8.2",
+    "serverless": "^3.39.0"
   },
   "devDependencies": {
     "aws-sdk": "^2.1372.0",
@@ -55,7 +56,6 @@
     "jest-extended": "^0.9.0",
     "nodemon": "^2.0.20",
     "sequelize-cli": "^6.5.2",
-    "serverless": "^3.39.0",
     "serverless-auto-swagger": "^2.12.0",
     "serverless-aws-documentation": "^1.1.0",
     "serverless-dotenv-plugin": "^4.0.2",
