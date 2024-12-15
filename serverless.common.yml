@@ -11,10 +11,10 @@ custom:
 #     uat: 512
 #     prod: 1024
   artifactBucket: xplor-${self:custom.common.stage}-${self:custom.common.projectName}-layers-bucket
-#   secretsManager:
-#     dev: dev/test
-#     uat: uat/test
-#     prod: prod/test
+  secretsManager:
+    dev: dev/xplor-iam
+    # uat: uat/test
+    # prod: prod/test
   # kSmsPubKey:
   #   dev: eoLEfAnV6bVxqawkp6lj5DYsMJxiVSlhVxzkT534HY5AyThuVCdApc/ZWOv44e11GGMfV650fSuWQ13zjWAXrg==
   #   uat: eoLEfAnV6bVxqawkp6lj5DYsMJxiVSlhVxzkT534HY5AyThuVCdApc/ZWOv44e11GGMfV650fSuWQ13zjWAXrg==
