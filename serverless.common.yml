@@ -1,6 +1,6 @@
-# custom:
-#   stage: ${opt:stage, self:provider.stage}
-#   projectName: idaas-iam
+custom:
+  stage: ${self:provider.stage}
+  projectName: iam
 #   resourcesStages:
 #     dev: dev
 #     uat: uat
@@ -10,7 +10,7 @@
 #     dev: 512
 #     uat: 512
 #     prod: 1024
-  # artifactBucket: ud-${self:custom.common.stage}-${self:custom.common.projectName}-layers-bucket
+  artifactBucket: xplor-${self:custom.common.stage}-${self:custom.common.projectName}-layers-bucket
 #   secretsManager:
 #     dev: dev/test
 #     uat: uat/test
