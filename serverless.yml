@@ -2,10 +2,10 @@ service: serverless-boilerplate
 frameworkVersion: "3"
 
 custom:
-  # common: ${file(./serverless.common.yml):custom}
+  common: ${file(./serverless.common.yml):custom}
   serverless-layers:
     dependenciesPath: ./package.json
-    # layersDeploymentBucket: ${self:custom.common.artifactBucket}
+    layersDeploymentBucket: ${self:custom.common.artifactBucket}
 
 provider:
   name: aws
@@ -16,7 +16,7 @@ provider:
   versionFunctions: false
   logRetentionInDays: 90
   deploymentBucket:
-    name: ${env:DEPLOYMENT_BUCKET, 'xplor-dk-test'}
+    name: ${env:DEPLOYMENT_BUCKET, 'xplor-dev-iam-deployment-bucket'}
     serverSideEncryption: aws:kms
   iam:
     deploymentRole: arn:aws:iam::153326081486:role/xplor-deployer
@@ -38,8 +38,8 @@ provider:
   #   AWS_SECRETS_MANAGER_TIMEOUT: ${env:AWS_SECRETS_MANAGER_TIMEOUT, '2000'}
 
 package:
-  exclude:
-    - node_modules
+  # exclude:
+  #   - "node_modules/**"
   patterns:
     - "!package-lock.json"
     - "!yarn.lock"

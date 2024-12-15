@@ -1,3 +1,4 @@
 plugins:
   - serverless-offline
   - serverless-layers
+  - serverless-plugin-include-dependencies
