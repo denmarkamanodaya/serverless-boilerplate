@@ -7,4 +7,4 @@ Resources:
         gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
         gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST,PUT,DELETE'"
       ResponseType: DEFAULT_4XX
-      RestApiId: rhw9apbtxc
+      RestApiId: 2bsvo6b74l ###

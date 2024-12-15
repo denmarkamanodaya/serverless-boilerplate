@@ -5,7 +5,7 @@ custom:
   common: ${file(./serverless.common.yml):custom}
   serverless-layers:
     dependenciesPath: ./package.json
-    layersDeploymentBucket: ${self:custom.common.artifactBucket}
+    layersDeploymentBucket: ${self:custom.common.artifactBucket} ###
 
 provider:
   name: aws
@@ -16,11 +16,11 @@ provider:
   versionFunctions: false
   logRetentionInDays: 90
   deploymentBucket:
-    name: ${env:DEPLOYMENT_BUCKET, 'xplor-dev-iam-deployment-bucket'}
+    name: ${env:DEPLOYMENT_BUCKET, 'xplor-dev-iam-deployment-bucket'} ###
     serverSideEncryption: aws:kms
   iam:
-    deploymentRole: arn:aws:iam::153326081486:role/xplor-deployer
-  #   role: ${env:EXECUTION_ROLE, ''}
+    deploymentRole: arn:aws:iam::153326081486:role/xplor-deployer ### general 
+    role: arn:aws:iam::153326081486:role/serverless-boilerplate-dev-lambda2-role ###
   # vpc:
   #   securityGroupIds:
   #     - ${env:SECURITY_GROUP_ID, ''}
@@ -28,18 +28,14 @@ provider:
   #     - ${env:SUBNET_ID_A, ''}
   #     - ${env:SUBNET_ID_B, ''}
   apiGateway:
-    restApiId: rhw9apbtxc
-    restApiRootResourceId: 1mty6u7kk4
+    restApiId: 2bsvo6b74l ### resources.yml dependent 
+    restApiRootResourceId: n8gag72sl7 ###
   timeout: 30
   environment:
     NODE_ENV: ${env:NODE_ENV, 'development'}
-    AWS_SECRETS_MANAGER_NAME: ${self:custom.common.secretsManager.${self:custom.common.stage}}
-  #   AWS_SECRETS_MANAGER_REGION: ${env:AWS_SECRETS_MANAGER_REGION, 'us-east-1'}
-  #   AWS_SECRETS_MANAGER_TIMEOUT: ${env:AWS_SECRETS_MANAGER_TIMEOUT, '2000'}
+    AWS_SECRETS_MANAGER_NAME: ${self:custom.common.secretsManager.${self:custom.common.stage}} ###
 
 package:
-  # exclude:
-  #   - "node_modules/**"
   patterns:
     - "!package-lock.json"
     - "!yarn.lock"
