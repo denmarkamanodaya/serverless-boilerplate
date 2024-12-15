@@ -1,0 +1,7 @@
+role-create-v1:
+  handler: src/handlers/role/create/v1.handler
+  events:
+    - http:
+        path: /v1/role/create
+        method: POST
+        cors: true

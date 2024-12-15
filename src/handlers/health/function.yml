@@ -1,7 +1,0 @@
-health-v1:
-  handler: src/handlers/health/v1.handler
-  events:
-    - http:
-        path: /v1/health
-        method: GET
-        cors: true

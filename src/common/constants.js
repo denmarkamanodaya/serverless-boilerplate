@@ -11,20 +11,17 @@ const REGULAR_EXPRESSION = {
   REMOVE_SPACE: /\s+/g,
   CHECK_NUMBER: /^\d+$/,
   VALID_NAME: /^[ña-z\d\s]+$/i,
+  REPLACE_HYPEN: /-/g,
 };
 
-const JWT_CONFIG = {
-  KMS_KEY: secrets.ASYMMETRIC_KMS_KEY,
-  ALGO: 'RSASSA_PKCS1_V1_5_SHA_256',
-  MESSAGE_TYPE: 'RAW',
-  HEADER_ALG: 'RS256',
-  HEADER_TYP: 'jWT',
-  TOKEN_DURATION: 1800,
-  TIME_FORMAT: 'seconds',
-};
+const AUTH0_TENANT = {
+  DOMAIN: secrets.AUTH0_DOMAIN,
+  CLIENT_ID: secrets.AUTH0_CLIENT_ID,
+  CLIENT_SECRET: secrets.AUTH0_CLIENT_SECRET,
+}
 
 module.exports = {
   HEADER_AUTH,
   REGULAR_EXPRESSION,
-  JWT_CONFIG,
+  AUTH0_TENANT,
 };

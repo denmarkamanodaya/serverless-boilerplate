@@ -1,0 +1,23 @@
+org-create-v1:
+  handler: src/handlers/org/create/v1.handler
+  events:
+    - http:
+        path: /v1/org/create
+        method: POST
+        cors: true
+
+org-get-by-name-v1:
+  handler: src/handlers/org/get-by-name/v1.handler
+  events:
+    - http:
+        path: /v1/org/{name}
+        method: GET
+        cors: true
+  
+org-orchestration-v1:
+  handler: src/handlers/org/orchestration/v1.handler
+  events:
+    - http:
+        path: /v1/org/orchestration
+        method: POST
+        cors: true

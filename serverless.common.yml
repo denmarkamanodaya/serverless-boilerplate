@@ -1,20 +1,20 @@
-custom:
-  stage: ${opt:stage, self:provider.stage}
-  projectName: idaas-iam
-  resourcesStages:
-    dev: dev
-    uat: uat
-    prod: prod
-  resourcesStage: ${self:custom.resourcesStages.${self:custom.common.stage}, self:custom.common.resourcesStages.dev}
-  memSize:
-    dev: 512
-    uat: 512
-    prod: 1024
-  artifactBucket: ud-${self:custom.common.stage}-${self:custom.common.projectName}-layers-bucket
-  secretsManager:
-    dev: dev/test
-    uat: uat/test
-    prod: prod/test
+# custom:
+#   stage: ${opt:stage, self:provider.stage}
+#   projectName: idaas-iam
+#   resourcesStages:
+#     dev: dev
+#     uat: uat
+#     prod: prod
+#   resourcesStage: ${self:custom.resourcesStages.${self:custom.common.stage}, self:custom.common.resourcesStages.dev}
+#   memSize:
+#     dev: 512
+#     uat: 512
+#     prod: 1024
+  # artifactBucket: ud-${self:custom.common.stage}-${self:custom.common.projectName}-layers-bucket
+#   secretsManager:
+#     dev: dev/test
+#     uat: uat/test
+#     prod: prod/test
   # kSmsPubKey:
   #   dev: eoLEfAnV6bVxqawkp6lj5DYsMJxiVSlhVxzkT534HY5AyThuVCdApc/ZWOv44e11GGMfV650fSuWQ13zjWAXrg==
   #   uat: eoLEfAnV6bVxqawkp6lj5DYsMJxiVSlhVxzkT534HY5AyThuVCdApc/ZWOv44e11GGMfV650fSuWQ13zjWAXrg==

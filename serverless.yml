@@ -2,81 +2,40 @@ service: serverless-boilerplate
 frameworkVersion: "3"
 
 custom:
-  common: ${file(./serverless.common.yml):custom}
+  # common: ${file(./serverless.common.yml):custom}
   serverless-layers:
     dependenciesPath: ./package.json
-    layersDeploymentBucket: ${self:custom.common.artifactBucket}
+    # layersDeploymentBucket: ${self:custom.common.artifactBucket}
 
 provider:
   name: aws
-  runtime: nodejs16.x
-  region: ap-southeast-1
+  runtime: nodejs18.x
+  region: us-east-1
   stage: ${env:ENV, 'dev'}
   lambdaHashingVersion: 20201221
   versionFunctions: false
   logRetentionInDays: 90
   deploymentBucket:
-    name: ${env:DEPLOYMENT_BUCKET, ''}
+    name: ${env:DEPLOYMENT_BUCKET, 'xplor-dk-test'}
     serverSideEncryption: aws:kms
   iam:
-    deploymentRole: ${env:DEPLOYMENT_ROLE, ''}
-    role: ${env:EXECUTION_ROLE, ''}
-  vpc:
-    securityGroupIds:
-      - ${env:SECURITY_GROUP_ID, ''}
-    subnetIds:
-      - ${env:SUBNET_ID_A, ''}
-      - ${env:SUBNET_ID_B, ''}
+    deploymentRole: arn:aws:iam::153326081486:role/xplor-deployer
+  #   role: ${env:EXECUTION_ROLE, ''}
+  # vpc:
+  #   securityGroupIds:
+  #     - ${env:SECURITY_GROUP_ID, ''}
+  #   subnetIds:
+  #     - ${env:SUBNET_ID_A, ''}
+  #     - ${env:SUBNET_ID_B, ''}
   apiGateway:
-    restApiId: ${env:API_GATEWAY_ID, ''}
-    restApiRootResourceId: ${env:ROOT_RESOURCE_ID, ''}
+    restApiId: rhw9apbtxc
+    restApiRootResourceId: 1mty6u7kk4
   timeout: 30
   environment:
     NODE_ENV: ${env:NODE_ENV, 'development'}
-    AWS_SECRETS_MANAGER_NAME: ${self:custom.common.secretsManager.${self:custom.common.stage}}
-    AWS_SECRETS_MANAGER_REGION: ${env:AWS_SECRETS_MANAGER_REGION, 'ap-southeast-1'}
-    AWS_SECRETS_MANAGER_TIMEOUT: ${env:AWS_SECRETS_MANAGER_TIMEOUT, '2000'}
-
-    # BAAS_MEMBERSHIP_VERSION: ${env:BAAS_MEMBERSHIP_VERSION, '1.0.13'}
-    # BAAS_NEW_DEVICE_LOGIN_TEMPLATE: ${env:BAAS_NEW_DEVICE_LOGIN_TEMPLATE, 'new-device-login'}
-    # BAAS_NEW_DEVICE_LOGIN_TEMPLATE_ENTITY_ID: ${env:BAAS_NEW_DEVICE_LOGIN_TEMPLATE_ENTITY_ID, 'UD'}
-    # BAAS_NEW_DEVICE_LOGIN_TEMPLATE_APP_ID: ${env:BAAS_NEW_DEVICE_LOGIN_TEMPLATE_APP_ID, 'UnionDigital'}
-
-    # BAAS_DEVICE_TURN_ON_FLOW_ID: trusted-device-turnon-authorization
-    # BAAS_NOTIF_ENTITY_ID: UD
-    # BAAS_NOTIF_APP_ID: UnionDigital_IAM
-    # BAAS_TURN_ON_TEMPLATE_NAME: trusted-device-turned-on-notification
-    # BAAS_TURN_OFF_TEMPLATE_NAME: trusted-device-turned-off-notification
-    # IK_SMS_PUB_KEY: ${self:custom.common.kSmsPubKey.${self:custom.common.stage}}
-    # IK_UMS_PUB_KEY: ${self:custom.common.kUmsPubKey.${self:custom.common.stage}}
-
-    # IDA_BASE_URL: ${self:custom.common.idaServiceUrl.${self:custom.common.stage}}
-
-    # NOTIFICATION_SERVICE_URL: ${self:custom.common.notifServiceUrl.${self:custom.common.stage}}
-    # NOTIFICATION_SERVICE_SMS_SENDER_NAME: ${self:custom.common.notifServiceSender.${self:custom.common.stage}}
-    # NOTIFICATION_SERVICE_EMAIL_SENDER_NAME: UD Notification <no-reply@uniondigitalbank.io>
-    # NOTIFICATION_SERVICE_NEW_DEVICE_TEMPLATE_NAME: iam-new-device-login
-    # NOTIFICATION_SERVICE_TOGGLE_ON_TEMPLATE_NAME: iam-toggle-on-trust-device-successful
-    # NOTIFICATION_SERVICE_TOGGLE_OFF_TEMPLATE_NAME: iam-toggle-off-trust-device
-    # NOTIFICATION_SERVICE_TOGGLE_ON_OTP_TEMPLATE_NAME: iam-toggle-on-trust-device-otp
-
-    # MFA_SERVICE_TABLE_NAME: 'auth-service-db'
-    # MFA_SERVICE_OTP_FORMAT: 'numeric'
-    # MFA_SERVICE_TIME_FORMAT: 'seconds'
-    # MFA_SERVICE_OTP_DURATION: 120
-    # MFA_SERVICE_OTP_LENGTH: 6
-    # MFA_SERVICE_OTP_COOLDOWN: 120
-    # MFA_SERVICE_USER_COOLDOWN: 3600
-    # MFA_SERVICE_OTP_MAX_ATTEMPTS: 3
-
-    JWT_TOKEN_DURATION: 1800
-
-    # FRAUD_MONITORING_SERVICE_URL: ${self:custom.common.fraudServiceUrl.${self:custom.common.stage}}
-  # tags:
-  #   Portfolio: 'Security'
-  #   Project: 'IAM'
-  #   Environment: ${self:custom.common.tagStage.${self:custom.common.stage}}
-  #   CostCenter: 'Technology'
+  #   AWS_SECRETS_MANAGER_NAME: ${self:custom.common.secretsManager.${self:custom.common.stage}}
+  #   AWS_SECRETS_MANAGER_REGION: ${env:AWS_SECRETS_MANAGER_REGION, 'us-east-1'}
+  #   AWS_SECRETS_MANAGER_TIMEOUT: ${env:AWS_SECRETS_MANAGER_TIMEOUT, '2000'}
 
 package:
   exclude:
@@ -86,8 +45,9 @@ package:
     - "!yarn.lock"
 
 functions:
-  - ${file(src/handlers/health/function.yml)}
-  - ${file(src/handlers/mfa/function.yml)}
+  - ${file(src/handlers/auth/function.yml)}
+  - ${file(src/handlers/org/function.yml)}
+  - ${file(src/handlers/role/function.yml)}
 
 plugins: ${file(yml/plugins.yml):plugins}
 resources: ${file(yml/resources.yml)}
