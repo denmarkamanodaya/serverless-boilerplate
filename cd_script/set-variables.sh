@@ -3,7 +3,7 @@ echo "Setting up env variables"
 
 BRANCH="$(git rev-parse --abbrev-ref HEAD)"
 
-if [[ "$BRANCH" != "dev" ]]; then
+if [[ "$BRANCH" == "dev" ]]; then
     deployerRoleArn='arn:aws:iam::153326081486:role/xplor-deployer'
     deploymentBucket='xplor-dev-iam-deployment-bucket'
     apiGatewayId='2bsvo6b74l'
