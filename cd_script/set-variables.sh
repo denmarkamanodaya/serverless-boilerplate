@@ -12,6 +12,9 @@ export DEPLOYMENT_BUCKET=$deploymentBucket
 export API_GATEWAY_ID=$apiGatewayId
 export ROOT_RESOURCE_ID=$rootResourceId
 
+echo $DEPLOYER_ROLE
+echo $DEPLOYMENT_BUCKET
+echo $API_GATEWAY_ID
 echo $ROOT_RESOURCE_ID
 
 # export ACTIVE_BRANCH=$BITBUCKET_BRANCH
