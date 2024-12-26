@@ -12,11 +12,13 @@ export DEPLOYMENT_BUCKET=$deploymentBucket
 export API_GATEWAY_ID=$apiGatewayId
 export ROOT_RESOURCE_ID=$rootResourceId
 
-echo $DEPLOYER_ROLE
-echo $DEPLOYMENT_BUCKET
-echo $API_GATEWAY_ID
-echo $ROOT_RESOURCE_ID
-
+if [ ! -z $GITHUB_ACTIONS ]
+then
+    echo DEPLOYER_ROLE=$deployerRoleArn >> $GITHUB_ENV
+    echo DEPLOYMENT_BUCKET=$deploymentBucket >> $GITHUB_ENV
+    echo API_GATEWAY_ID=$apiGatewayId >> $GITHUB_ENV
+    echo ROOT_RESOURCE_ID=$rootResourceId >> $GITHUB_ENV
+fi
 # export ACTIVE_BRANCH=$BITBUCKET_BRANCH
 
 # deployerRoleArn=''
