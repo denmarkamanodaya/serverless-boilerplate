@@ -1,11 +1,15 @@
 #!/bin/bash
 echo "Setting up env variables"
 
-deployerRoleArn='arn:aws:iam::153326081486:role/xplor-deployer'
-deploymentBucket='xplor-dev-iam-deployment-bucket'
-apiGatewayId='2bsvo6b74l'
-rootResourceId='n8gag72sl7'
-executionRoleArn='arn:aws:iam::153326081486:role/serverless-boilerplate-dev-lambda2-role'
+BRANCH="$(git rev-parse --abbrev-ref HEAD)"
+
+if [[ "$BRANCH" != "dev" ]]; then
+    deployerRoleArn='arn:aws:iam::153326081486:role/xplor-deployer'
+    deploymentBucket='xplor-dev-iam-deployment-bucket'
+    apiGatewayId='2bsvo6b74l'
+    rootResourceId='n8gag72sl7'
+    executionRoleArn='arn:aws:iam::153326081486:role/serverless-boilerplate-dev-lambda2-role'
+fi
 
 export DEPLOYER_ROLE=$deployerRoleArn
 export DEPLOYMENT_BUCKET=$deploymentBucket
