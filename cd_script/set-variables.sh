@@ -73,7 +73,7 @@
 # export SLS_STAGE=$slsStage
 # export SLS_REGION=$slsRegion
 
-# echo "setting up env variables for $BITBUCKET_BRANCH branch : $SLS_STAGE environment"
+echo "setting up env variables"
 
 # export VPC_SETTINGS=$vpcSettings
 export DEPLOYER_ROLE='arn:aws:iam::153326081486:role/xplor-deployer'
