@@ -1,4 +1,4 @@
-# #!/bin/bash
+#!/bin/bash
 # export ACTIVE_BRANCH=$BITBUCKET_BRANCH
 
 # deployerRoleArn=''
@@ -76,14 +76,14 @@
 # echo "setting up env variables for $BITBUCKET_BRANCH branch : $SLS_STAGE environment"
 
 # export VPC_SETTINGS=$vpcSettings
-# export DEPLOYER_ROLE=$deployerRoleArn
+export DEPLOYER_ROLE='arn:aws:iam::153326081486:role/xplor-deployer'
 # export DEPLOYMENT_ROLE=$deploymentRoleArn
-# export DEPLOYMENT_BUCKET=$deploymentBucket
+export DEPLOYMENT_BUCKET='xplor-dev-iam-deployment-bucket'
 # export SUBNET_ID_A=$subnetIdA
 # export SUBNET_ID_B=$subnetIdB
 # export SECURITY_GROUP_ID=$securityGroupId
 # export EXECUTION_ROLE=$executionRoleArn
-# export API_GATEWAY_ID=$apiGatewayId
-# export ROOT_RESOURCE_ID=$rootResourceId
+export API_GATEWAY_ID='2bsvo6b74l'
+export ROOT_RESOURCE_ID='n8gag72sl7'
 # export NODE_ENV=$environmentName
 
