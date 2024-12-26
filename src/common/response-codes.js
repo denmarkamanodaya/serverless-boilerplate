@@ -16,6 +16,12 @@ const httpResponseCodes = new Enum({
   ACCEPTED: 'ACCEPTED',
 });
 
+const auth0ResponseCodes = new Enum({
+  TOKEN_VERIFIED: 'TOKEN_VERIFIED',
+  TOKEN_INVALID: 'TOKEN_INVALID',
+});
+
 module.exports = {
   httpResponseCodes,
+  auth0ResponseCodes
 };

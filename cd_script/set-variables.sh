@@ -1,4 +1,27 @@
-# #!/bin/bash
+#!/bin/bash
+echo "Setting up env variables"
+
+deployerRoleArn='arn:aws:iam::153326081486:role/xplor-deployer'
+deploymentBucket='xplor-dev-iam-deployment-bucket'
+apiGatewayId='2bsvo6b74l'
+rootResourceId='n8gag72sl7'
+executionRoleArn='arn:aws:iam::153326081486:role/serverless-boilerplate-dev-lambda2-role'
+
+export DEPLOYER_ROLE=$deployerRoleArn
+export DEPLOYMENT_BUCKET=$deploymentBucket
+export API_GATEWAY_ID=$apiGatewayId
+export ROOT_RESOURCE_ID=$rootResourceId
+export EXECUTION_ROLE=$executionRoleArn
+
+if [ ! -z $GITHUB_ACTIONS ]
+then
+    echo DEPLOYER_ROLE=$deployerRoleArn >> $GITHUB_ENV
+    echo DEPLOYMENT_BUCKET=$deploymentBucket >> $GITHUB_ENV
+    echo API_GATEWAY_ID=$apiGatewayId >> $GITHUB_ENV
+    echo ROOT_RESOURCE_ID=$rootResourceId >> $GITHUB_ENV
+    echo EXECUTION_ROLE=$executionRoleArn >> $GITHUB_ENV
+fi
+
 # export ACTIVE_BRANCH=$BITBUCKET_BRANCH
 
 # deployerRoleArn=''
@@ -73,17 +96,11 @@
 # export SLS_STAGE=$slsStage
 # export SLS_REGION=$slsRegion
 
-# echo "setting up env variables for $BITBUCKET_BRANCH branch : $SLS_STAGE environment"
-
 # export VPC_SETTINGS=$vpcSettings
-# export DEPLOYER_ROLE=$deployerRoleArn
 # export DEPLOYMENT_ROLE=$deploymentRoleArn
-# export DEPLOYMENT_BUCKET=$deploymentBucket
 # export SUBNET_ID_A=$subnetIdA
 # export SUBNET_ID_B=$subnetIdB
 # export SECURITY_GROUP_ID=$securityGroupId
 # export EXECUTION_ROLE=$executionRoleArn
-# export API_GATEWAY_ID=$apiGatewayId
-# export ROOT_RESOURCE_ID=$rootResourceId
 # export NODE_ENV=$environmentName
 

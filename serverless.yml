@@ -5,7 +5,7 @@ custom:
   common: ${file(./serverless.common.yml):custom}
   serverless-layers:
     dependenciesPath: ./package.json
-    layersDeploymentBucket: ${self:custom.common.artifactBucket} ###
+    layersDeploymentBucket: ${self:custom.common.artifactBucket}
 
 provider:
   name: aws
@@ -16,11 +16,11 @@ provider:
   versionFunctions: false
   logRetentionInDays: 90
   deploymentBucket:
-    name: ${env:DEPLOYMENT_BUCKET, 'xplor-dev-iam-deployment-bucket'} ###
+    name: ${env:DEPLOYMENT_BUCKET}
     serverSideEncryption: aws:kms
   iam:
-    deploymentRole: arn:aws:iam::153326081486:role/xplor-deployer ### general 
-    role: arn:aws:iam::153326081486:role/serverless-boilerplate-dev-lambda2-role ###
+    deploymentRole: ${env:DEPLOYER_ROLE}
+    role: ${env:EXECUTION_ROLE}
   # vpc:
   #   securityGroupIds:
   #     - ${env:SECURITY_GROUP_ID, ''}
@@ -28,8 +28,8 @@ provider:
   #     - ${env:SUBNET_ID_A, ''}
   #     - ${env:SUBNET_ID_B, ''}
   apiGateway:
-    restApiId: 2bsvo6b74l ### resources.yml dependent 
-    restApiRootResourceId: n8gag72sl7 ###
+    restApiId: ${env:API_GATEWAY_ID}
+    restApiRootResourceId: ${env:ROOT_RESOURCE_ID}
   timeout: 30
   environment:
     NODE_ENV: ${env:NODE_ENV, 'development'}

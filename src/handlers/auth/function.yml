@@ -5,3 +5,11 @@ auth-v1:
         path: /v1/auth
         method: POST
         cors: true
+
+verify-v1:
+  handler: src/handlers/auth/verify/v1.handler
+  events:
+    - http:
+        path: /v1/verify
+        method: POST
+        cors: true
