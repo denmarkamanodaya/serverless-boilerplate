@@ -16,11 +16,11 @@ provider:
   versionFunctions: false
   logRetentionInDays: 90
   deploymentBucket:
-    name: ${env:DEPLOYMENT_BUCKET} ###
+    name: ${env:DEPLOYMENT_BUCKET}
     serverSideEncryption: aws:kms
   iam:
     deploymentRole: ${env:DEPLOYER_ROLE}
-    role: ${env.EXECUTION_ROLE}
+    role: ${env:EXECUTION_ROLE}
   # vpc:
   #   securityGroupIds:
   #     - ${env:SECURITY_GROUP_ID, ''}
