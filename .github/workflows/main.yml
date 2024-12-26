@@ -17,8 +17,7 @@ jobs:
       with:
         node-version: ${{ matrix.node-version }}
     - run: npm ci
-    - run: chmod +x ./cd_script/set-variables.sh
-    - run: sh ./cd_script/set-variables.sh
+    - run: chmod +x cd_script/set-variables.sh && source cd_script/set-variables.sh
     - name: serverless deploy
       uses: serverless/github-action@v3.2
       with:
