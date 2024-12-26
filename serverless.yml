@@ -47,15 +47,4 @@ functions:
   - ${file(src/handlers/health/function.yml)}
 
 plugins: ${file(yml/plugins.yml):plugins}
-
-# resources: 
-#   Resources:
-#     GatewayResponseDefault4XX:
-#       Type: 'AWS::ApiGateway::GatewayResponse'
-#       Properties:
-#         ResponseParameters:
-#           gatewayresponse.header.Access-Control-Allow-Origin: "'*'"
-#           gatewayresponse.header.Access-Control-Allow-Headers: "'*'"
-#           gatewayresponse.header.Access-Control-Allow-Methods: "'GET,OPTIONS,POST,PUT,DELETE'"
-#         ResponseType: DEFAULT_4XX
-#         RestApiId: ${env:API_GATEWAY_ID, ''} ###
+# resources: ${file(yml/resources.yml)}
