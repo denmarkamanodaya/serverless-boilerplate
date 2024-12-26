@@ -1,16 +1,17 @@
 #!/bin/bash
-#Setting up ENV variables
-echo "setting up env variables"
+echo "Setting up env variables"
 
 deployerRoleArn='arn:aws:iam::153326081486:role/xplor-deployer'
 deploymentBucket='xplor-dev-iam-deployment-bucket'
 apiGatewayId='2bsvo6b74l'
 rootResourceId='n8gag72sl7'
+executionRoleArn='arn:aws:iam::153326081486:role/serverless-boilerplate-dev-lambda2-role'
 
 export DEPLOYER_ROLE=$deployerRoleArn
 export DEPLOYMENT_BUCKET=$deploymentBucket
 export API_GATEWAY_ID=$apiGatewayId
 export ROOT_RESOURCE_ID=$rootResourceId
+export EXECUTION_ROLE=$executionRoleArn
 
 if [ ! -z $GITHUB_ACTIONS ]
 then
@@ -18,7 +19,9 @@ then
     echo DEPLOYMENT_BUCKET=$deploymentBucket >> $GITHUB_ENV
     echo API_GATEWAY_ID=$apiGatewayId >> $GITHUB_ENV
     echo ROOT_RESOURCE_ID=$rootResourceId >> $GITHUB_ENV
+    echo EXECUTION_ROLE=$executionRoleArn >> $GITHUB_ENV
 fi
+
 # export ACTIVE_BRANCH=$BITBUCKET_BRANCH
 
 # deployerRoleArn=''

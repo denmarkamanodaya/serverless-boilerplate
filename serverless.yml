@@ -5,7 +5,7 @@ custom:
   common: ${file(./serverless.common.yml):custom}
   serverless-layers:
     dependenciesPath: ./package.json
-    layersDeploymentBucket: ${self:custom.common.artifactBucket} ###
+    layersDeploymentBucket: ${self:custom.common.artifactBucket}
 
 provider:
   name: aws
@@ -19,8 +19,8 @@ provider:
     name: ${env:DEPLOYMENT_BUCKET} ###
     serverSideEncryption: aws:kms
   iam:
-    deploymentRole: ${env:DEPLOYER_ROLE} ### general 
-    role: arn:aws:iam::153326081486:role/serverless-boilerplate-dev-lambda2-role ###
+    deploymentRole: ${env:DEPLOYER_ROLE}
+    role: ${env.EXECUTION_ROLE}
   # vpc:
   #   securityGroupIds:
   #     - ${env:SECURITY_GROUP_ID, ''}
@@ -28,8 +28,8 @@ provider:
   #     - ${env:SUBNET_ID_A, ''}
   #     - ${env:SUBNET_ID_B, ''}
   apiGateway:
-    restApiId: ${env:API_GATEWAY_ID} ### resources.yml dependent 
-    restApiRootResourceId: ${env:ROOT_RESOURCE_ID} ###
+    restApiId: ${env:API_GATEWAY_ID}
+    restApiRootResourceId: ${env:ROOT_RESOURCE_ID}
   timeout: 30
   environment:
     NODE_ENV: ${env:NODE_ENV, 'development'}
@@ -47,4 +47,4 @@ functions:
   - ${file(src/handlers/health/function.yml)}
 
 plugins: ${file(yml/plugins.yml):plugins}
-# resources: ${file(yml/resources.yml)}
+resources: ${file(yml/resources.yml)}
